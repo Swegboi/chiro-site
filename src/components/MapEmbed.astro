@@ -1,0 +1,22 @@
+---
+import { site } from '../data/site';
+
+const addressQuery = encodeURIComponent(
+	`${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode}`,
+);
+const embedUrl = `https://www.google.com/maps?q=${addressQuery}&output=embed`;
+---
+
+<div class="map-embed">
+	<iframe
+		src={embedUrl}
+		title={`Map showing ${site.name} at ${site.address.street}`}
+		loading="lazy"
+		referrerpolicy="no-referrer-when-downgrade"
+		allowfullscreen
+	></iframe>
+	<div class="map-embed__footer">
+		<span>{site.address.street}, {site.address.locality}, {site.address.region} {site.address.postalCode}</span>
+		<a href={site.mapUrl} target="_blank" rel="noreferrer">Open in Google Maps <span aria-hidden="true">&rarr;</span></a>
+	</div>
+</div>

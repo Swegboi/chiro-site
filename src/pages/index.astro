@@ -1,0 +1,157 @@
+---
+import BookingAction from '../components/BookingAction.astro';
+import ContactDetails from '../components/ContactDetails.astro';
+import PrimaryAction from '../components/PrimaryAction.astro';
+import ServiceSummary from '../components/ServiceSummary.astro';
+import TestimonialGrid from '../components/TestimonialGrid.astro';
+import { site } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<section class="hero">
+		<div class="container hero-grid">
+			<div>
+				<span class="eyebrow">Local chiropractic care</span>
+				<h1>A clearer <em>next step</em> for everyday care.</h1>
+				<p class="hero-copy">
+					A welcoming place to ask questions, understand your options, and make a plan that feels right for you.
+				</p>
+				<div class="hero-actions">
+					<BookingAction />
+					<a class="text-link" href="/contact/">View hours and location <span aria-hidden="true">&rarr;</span></a>
+				</div>
+				<ul class="hero-facts" aria-label="Practice highlights">
+					<li><strong>{site.address.area}</strong><span>{site.address.locality}, {site.address.region}</span></li>
+					<li><strong>{site.hours[1]?.time}</strong><span>Tuesday - Thursday</span></li>
+					<li><strong>{site.visitPolicy.returningVisit}</strong><span>After your first visit</span></li>
+				</ul>
+			</div>
+
+			<div class="hero-art" aria-label="Abstract illustration representing a grounded first step" role="img">
+				<span class="hero-art__label">Your next step</span>
+				<div class="hero-art__mark" aria-hidden="true"><span class="hero-art__dot"></span></div>
+				<div class="hero-art__note">
+					<span>Start here</span>
+					<strong>Good care begins with a clear conversation.</strong>
+					<p>Reach out, ask what you need to know, and take it one step at a time.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="signal-bar" aria-label="Practice values">
+		<div class="container signal-bar__inner">
+			<div class="signal-bar__item">Clear information</div>
+			<div class="signal-bar__item">A local point of contact</div>
+			<div class="signal-bar__item">A plan that starts with you</div>
+		</div>
+	</div>
+
+	<section class="section section--white">
+		<div class="container split-section">
+			<div class="section-aside">
+				<span class="section-kicker">The practice</span>
+				<span class="section-aside__number" aria-hidden="true">01</span>
+				<p>Thoughtful information for deciding what comes next.</p>
+			</div>
+			<div class="split-section__body">
+				<p>
+					McCandless Township Chiropractic is a simple, useful resource for the local community: know where to go, know when the office is open, and know how to reach the team.
+				</p>
+				<a class="text-link" href="/about/">Learn about the practice <span aria-hidden="true">&rarr;</span></a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section practice-gallery">
+		<div class="container">
+			<div class="section-heading">
+				<span class="section-kicker">A real place to arrive</span>
+				<h2>See the office before you visit.</h2>
+				<p>A home office, a welcoming waiting room, and a space set up for focused care.</p>
+			</div>
+			<div class="office-gallery">
+				<figure class="office-gallery__feature">
+					<img src="/images/mccandless-chiropractic-office.jpg" alt="Exterior of McCandless Township Chiropractic at 997 Cumberland Road" width="680" height="510" loading="lazy" />
+					<figcaption>997 Cumberland Road</figcaption>
+				</figure>
+				<figure>
+					<img src="/images/waiting-room-office.jpg" alt="Waiting room inside McCandless Township Chiropractic" width="382" height="510" loading="lazy" />
+					<figcaption>The waiting room</figcaption>
+				</figure>
+				<figure>
+					<img src="/images/new-table.jpg" alt="New chiropractic adjusting table inside the office" width="680" height="510" loading="lazy" />
+					<figcaption>The adjustment room</figcaption>
+				</figure>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--sage">
+		<div class="container split-section">
+			<div class="section-aside">
+				<span class="section-kicker">A private practice</span>
+				<span class="section-aside__number" aria-hidden="true">02</span>
+				<p>Local roots, transparent pricing, and time to explain what comes next.</p>
+			</div>
+			<div class="split-section__body">
+				<p>Dr. Ken Swegman has served the North Hills community for {site.doctor.yearsInPractice}. The home-office setting keeps the experience personal, while the pricing stays easy to understand.</p>
+				<div class="practice-facts">
+					<div><strong>$20</strong><span>Adjustment visit</span></div>
+					<div><strong>1988</strong><span>In practice since</span></div>
+					<div><strong>Monday</strong><span>Shockwave by appointment</span></div>
+				</div>
+				<a class="text-link" href="/about/">Meet Dr. Swegman <span aria-hidden="true">&rarr;</span></a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-heading">
+				<span class="section-kicker">Care, explained</span>
+				<h2>Start with what you want to understand.</h2>
+				<p>Explore the areas below, then reach out when you are ready to talk through a visit.</p>
+			</div>
+			<div class="services-grid">
+				{site.services.map((service) => <ServiceSummary service={service} />)}
+			</div>
+		</div>
+	</section>
+
+	<TestimonialGrid />
+
+	<section class="section section--white">
+		<div class="container">
+			<div class="callout">
+				<div>
+					<span class="section-kicker">For new patients</span>
+					<h2>Make the first visit feel more familiar.</h2>
+				</div>
+				<div class="callout__aside">
+					<p>Find the practical details before you arrive, including what to bring and how to contact the office.</p>
+					<a class="text-link" href="/what-to-expect/">See what to expect <span aria-hidden="true">&rarr;</span></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section contact-band" id="contact">
+		<div class="container contact-band__grid">
+			<div>
+				<span class="section-kicker">Find your way here</span>
+				<h2>Local care, easy to reach.</h2>
+			</div>
+			<div class="contact-band__aside">
+				<p>Keep the essentials close: the office phone, hours, and confirmed address will live here in one place.</p>
+				<ContactDetails />
+				<PrimaryAction href="/contact/" label="View contact details" variant="quiet" />
+			</div>
+		</div>
+	</section>
+
+	<div class="container content-note">
+		<strong>Scaffold note:</strong> Replace remaining bracketed first-visit and practice-approach details before launch.
+	</div>
+</Layout>

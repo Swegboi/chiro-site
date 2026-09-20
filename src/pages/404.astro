@@ -1,0 +1,19 @@
+---
+import PrimaryAction from '../components/PrimaryAction.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page not found" description="The page you requested could not be found." noIndex>
+	<section class="page-hero">
+		<div class="container page-hero__grid">
+			<div>
+				<span class="eyebrow">404</span>
+				<h1>This page took a wrong turn.</h1>
+			</div>
+			<div>
+				<p class="page-hero__copy">The link may have changed, but the useful details are still close by.</p>
+				<div class="hero-actions"><PrimaryAction href="/" label="Return home" /></div>
+			</div>
+		</div>
+	</section>
+</Layout>

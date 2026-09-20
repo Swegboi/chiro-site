@@ -1,0 +1,40 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+	compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<div class:list={['contact-details', { 'contact-details--compact': compact }]}>
+	<div class="contact-detail">
+		<span class="detail-label">Call the office</span>
+		{site.phoneHref ? (
+			<a class="detail-value detail-value--link" href={site.phoneHref}>
+				{site.phone} <span class="phone-mnemonic">({site.phoneMnemonic})</span>
+			</a>
+		) : (
+			<span class="detail-value">{site.phone} <span class="phone-mnemonic">({site.phoneMnemonic})</span></span>
+		)}
+	</div>
+	<div class="contact-detail">
+		<span class="detail-label">Find us</span>
+		<address class="detail-value">
+			{site.address.street}<br />
+			{site.address.locality}, {site.address.region} {site.address.postalCode}
+		</address>
+	</div>
+	<div class="contact-detail">
+		<span class="detail-label">Office hours</span>
+		<div class="hours-list">
+			{site.hours.map((item) => (
+				<div class="hours-row">
+					<span>{item.day}</span>
+					<span>{item.time}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</div>

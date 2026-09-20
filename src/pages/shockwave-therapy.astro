@@ -1,0 +1,125 @@
+---
+import PrimaryAction from '../components/PrimaryAction.astro';
+import { site } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Focused Shockwave Therapy | Pittsburgh" description="Focused shockwave therapy for selected chronic pain concerns in Pittsburgh's McCandless Township area. Learn about treatment areas, Monday appointments, and transparent pricing.">
+	<section class="page-hero">
+		<div class="container page-hero__grid">
+			<div>
+				<span class="eyebrow">A focused treatment option</span>
+				<h1>Focused shockwave therapy for chronic pain.</h1>
+			</div>
+			<p class="page-hero__copy">A non-invasive option for selected musculoskeletal concerns in the McCandless Township area, offered on Mondays by appointment only.</p>
+		</div>
+	</section>
+
+	<section class="section section--white">
+		<div class="container shockwave-intro">
+			<div class="shockwave-visual" role="img" aria-label="Abstract illustration of focused waves moving toward a treatment area">
+				<span class="shockwave-visual__label">Focused / targeted / scheduled</span>
+				<div class="shockwave-visual__rings" aria-hidden="true"><span></span><span></span><span></span><b></b></div>
+				<div class="shockwave-visual__caption">One area<br />at a time</div>
+			</div>
+			<div class="prose">
+				<span class="section-kicker">What it is</span>
+				<h2>A non-invasive option for selected chronic pain concerns.</h2>
+				<p>Focused shockwave therapy uses acoustic pressure waves applied through the skin to a targeted soft-tissue area. The goal of treatment is to support circulation and the body's response in the treatment area.</p>
+				<p>The practice presents focused shockwave therapy as an option to discuss before considering more invasive approaches. It is not a guarantee and is not a universal replacement for surgery, medication, or other care.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container split-section">
+			<div class="section-aside">
+				<span class="section-kicker">Focused delivery</span>
+				<span class="section-aside__number" aria-hidden="true">01</span>
+				<p>Focused waves concentrate energy at a selected depth and location.</p>
+			</div>
+			<div class="prose">
+				<h2>Focused, rather than broadly dispersed.</h2>
+				<p>Unlike radial pressure wave therapy, which disperses energy more broadly, focused shockwave therapy concentrates energy at a precise depth and location. That distinction allows the office to target deeper or more stubborn areas during an evaluation.</p>
+				<p>Dr. Swegman uses a focused shockwave machine with a piezoelectric generator designed for controlled delivery. The appropriate treatment area, settings, and schedule should be determined during an office evaluation.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--sage">
+		<div class="container">
+			<div class="section-heading">
+				<span class="section-kicker">Treatment areas</span>
+				<h2>Conditions the practice lists.</h2>
+				<p>These are the conditions and pain areas currently listed for focused shockwave therapy. Whether treatment is appropriate depends on an individual evaluation.</p>
+			</div>
+			<div class="condition-grid" aria-label="Focused shockwave therapy conditions">
+				{site.shockwave.conditions.map((condition, index) => (
+					<article class="condition-card">
+						<span class="condition-card__number">0{index + 1}</span>
+						<h3>{condition.name}</h3>
+						<p class="condition-card__detail">{condition.detail}</p>
+						<p class="condition-card__definition">{condition.definition}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-heading">
+				<span class="section-kicker">Schedule and pricing</span>
+				<h2>A clear plan, one week at a time.</h2>
+				<p>Shockwave appointments are separate from a standard chiropractic adjustment and are scheduled directly with the office.</p>
+			</div>
+			<div class="shockwave-details">
+				<div class="shockwave-detail">
+					<span class="detail-label">When</span>
+					<strong>Monday</strong>
+					<p>By appointment only</p>
+				</div>
+				<div class="shockwave-detail">
+					<span class="detail-label">How often</span>
+					<strong>Once per week</strong>
+					<p>Typical sessions: {site.shockwave.typicalSessions}. More chronic issues may need {site.shockwave.moreChronicSessions}.</p>
+				</div>
+				<div class="shockwave-detail">
+					<span class="detail-label">Per treatment</span>
+					<strong>${site.shockwave.pricePerArea}</strong>
+					<p>Per pain area at a time</p>
+				</div>
+				<div class="shockwave-detail">
+					<span class="detail-label">Pre-pay option</span>
+					<strong>${site.shockwave.prepayPrice}</strong>
+					<p>Pre-pay for {site.shockwave.prepayTreatments} treatments. {site.shockwave.prepayNote}.</p>
+				</div>
+			</div>
+			<div class="content-note">
+				<strong>Payment note:</strong> The office currently operates as a cash practice. Ask for an itemized receipt if you plan to seek HSA/FSA reimbursement, then check with your plan administrator.
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--deep">
+		<div class="container shockwave-next-step">
+			<div>
+				<span class="section-kicker">Before you schedule</span>
+				<h2>Start with a conversation about the area that hurts.</h2>
+			</div>
+			<div>
+				<p>Tell the office about relevant health conditions, medications, pregnancy, implanted devices, bleeding concerns, or cancer in the treatment area. The office can help determine whether focused shockwave therapy is appropriate.</p>
+				<div class="hero-actions">
+					<PrimaryAction href={site.phoneHref} label="Call about shockwave" />
+					<a class="text-link text-link--light" href="/contact/">View contact details <span aria-hidden="true">&rarr;</span></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--white">
+		<div class="container shockwave-source-note">
+			<p>For general background only, see the <a href="https://www.mayoclinic.org/medical-professionals/physical-medicine-rehabilitation/news/the-evolving-use-of-extracorporeal-shock-wave-therapy-in-managing-musculoskeletal-and-neurological-diagnoses/mac-20527246" target="_blank" rel="noreferrer">Mayo Clinic overview</a> and the <a href="https://shockwavetherapy.org/about-eswt" target="_blank" rel="noreferrer">International Society for Medical Shockwave Treatment</a>. The office's evaluation and treatment plan should guide individual care.</p>
+		</div>
+	</section>
+</Layout>

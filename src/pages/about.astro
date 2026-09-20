@@ -1,0 +1,40 @@
+---
+import PrimaryAction from '../components/PrimaryAction.astro';
+import { site } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About the practice" description="Learn about McCandless Township Chiropractic and the person behind the practice.">
+	<section class="page-hero">
+		<div class="container page-hero__grid">
+			<div>
+				<span class="eyebrow">About the practice</span>
+				<h1>More than three decades of practice.</h1>
+			</div>
+			<p class="page-hero__copy">Dr. Ken Swegman, D.C. has served the North Hills community for {site.doctor.yearsInPractice}, bringing a long-standing chiropractic practice to each visit.</p>
+		</div>
+	</section>
+
+	<section class="section section--white">
+		<div class="container profile-grid">
+			<figure class="profile-photo">
+				<img src="/images/dr-swegman.jpg" alt="Dr. Ken Swegman, D.C. in his office" width="680" height="510" />
+				<figcaption>Dr. Ken Swegman, D.C.</figcaption>
+			</figure>
+			<div class="prose">
+				<span class="section-kicker">Meet the practitioner</span>
+				<h2>{site.doctor.name}, {site.doctor.credentials}</h2>
+				<p>Dr. Swegman has been in practice since {site.doctor.practiceSince} and graduated from {site.doctor.education}.</p>
+				<p>He has served the North Hills community for {site.doctor.yearsInPractice} and has worked from his home office for the past {site.doctor.homeOfficeYears}.</p>
+				<h3>A thoughtful approach</h3>
+				<p>[Add a practice-approved explanation of the office's approach. Avoid promises about outcomes or language that has not been reviewed by the practice owner.]</p>
+				<div class="practice-facts" aria-label="Practice history">
+					<div><strong>{site.doctor.practiceSince}</strong><span>In practice since</span></div>
+					<div><strong>{site.doctor.yearsInPractice}</strong><span>Serving North Hills</span></div>
+					<div><strong>{site.doctor.homeOfficeYears}</strong><span>At the home office</span></div>
+				</div>
+				<PrimaryAction href="/contact/" label="Get in touch" />
+			</div>
+		</div>
+	</section>
+</Layout>

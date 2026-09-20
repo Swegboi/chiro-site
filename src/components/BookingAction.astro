@@ -1,0 +1,15 @@
+---
+import { hasBookingLink, site } from '../data/site';
+import PrimaryAction from './PrimaryAction.astro';
+
+const href = hasBookingLink ? site.bookingUrl : site.phoneHref;
+const label = hasBookingLink ? 'Book an appointment' : 'Call to schedule';
+const note = hasBookingLink
+	? `First visits are ${site.visitPolicy.firstVisit.toLowerCase()}. Returning patients may walk in during posted hours.`
+	: `First visits are ${site.visitPolicy.firstVisit.toLowerCase()}. Returning patients may walk in during posted hours. Call ${site.phone} to schedule.`;
+---
+
+<div class="booking-action">
+	<PrimaryAction href={href} label={label} external={hasBookingLink} />
+	<p class="action-note">{note}</p>
+</div>

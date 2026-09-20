@@ -1,0 +1,40 @@
+---
+import { navItems, site } from '../data/site';
+import ContactDetails from './ContactDetails.astro';
+---
+
+<footer class="site-footer">
+	<div class="container">
+		<div class="footer-grid">
+			<div class="footer-intro">
+				<a class="brand brand--footer" href="/" aria-label={`${site.name} home`}>
+					<span class="brand-mark" aria-hidden="true">MT</span>
+					<span class="brand-copy">
+						<strong>{site.shortName}</strong>
+						<span>{site.category}</span>
+					</span>
+				</a>
+				<p>{site.tagline}</p>
+				<a class="text-link text-link--light" href="/contact/">Start a conversation <span aria-hidden="true">&rarr;</span></a>
+			</div>
+
+			<div class="footer-nav-block">
+				<span class="footer-label">Explore</span>
+				<nav class="footer-nav" aria-label="Footer navigation">
+					{navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+					<a href="/privacy/">Privacy</a>
+				</nav>
+			</div>
+
+			<div class="footer-contact">
+				<span class="footer-label">Visit</span>
+				<ContactDetails compact />
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<span>&copy; {new Date().getFullYear()} {site.name}</span>
+			<span>Built for a more helpful first step.</span>
+		</div>
+	</div>
+</footer>

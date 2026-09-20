@@ -1,0 +1,29 @@
+---
+import { testimonials } from '../data/testimonials';
+import { site } from '../data/site';
+---
+
+<section class="section section--white testimonials-section">
+	<div class="container">
+		<div class="section-heading">
+			<span class="section-kicker">From the community</span>
+			<h2>Words from people who have visited.</h2>
+			<p>Selected excerpts from public Google reviews, shared here as community feedback.</p>
+		</div>
+		<div class="testimonial-grid">
+			{testimonials.map((testimonial) => (
+				<figure class="testimonial-card">
+					<blockquote>{testimonial.quote}</blockquote>
+					<figcaption>
+						<strong>{testimonial.name}</strong>
+						<span>{testimonial.source}</span>
+					</figcaption>
+				</figure>
+			))}
+		</div>
+		<p class="testimonial-note">Review excerpts should be checked against the original Google posts and approved by the reviewers before launch.</p>
+		<div class="testimonial-actions">
+			<a class="button button--quiet" href={site.googleReviewsUrl} target="_blank" rel="noreferrer">Read more Google reviews <span aria-hidden="true">&rarr;</span></a>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,60 @@
+---
+import ServiceSummary from '../components/ServiceSummary.astro';
+import { site } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Services" description="Explore the services offered by McCandless Township Chiropractic.">
+	<section class="page-hero">
+		<div class="container page-hero__grid">
+			<div>
+				<span class="eyebrow">What we offer</span>
+				<h1>Care, without the guesswork.</h1>
+			</div>
+			<p class="page-hero__copy">A clear overview of the services available at the practice, written in plain language and approved by the team.</p>
+		</div>
+	</section>
+
+	<section class="section section--white">
+		<div class="container">
+			<div class="section-heading">
+				<span class="section-kicker">Services</span>
+				<h2>Useful details for your next conversation.</h2>
+				<p>Published services, scheduling notes, and pricing are kept straightforward so you can decide how you want to begin.</p>
+			</div>
+			<div class="service-list">
+				{site.services.map((service) => <ServiceSummary service={service} />)}
+			</div>
+			<div class="content-note">
+				<strong>Good to know:</strong> Shockwave therapy is offered on Mondays by appointment only. Read the dedicated page for treatment areas, session cadence, and package pricing.
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--sage">
+		<div class="container">
+			<div class="section-heading">
+				<span class="section-kicker">Straightforward pricing</span>
+				<h2>Know the number before you call.</h2>
+				<p>These are the practice's published prices. The office currently operates as a cash practice. Ask the office about payment and itemized receipts.</p>
+			</div>
+			<div class="price-grid">
+				<article class="price-card">
+					<span class="price-card__label">Chiropractic adjustment</span>
+					<strong>$20</strong>
+					<span class="price-card__unit">per visit</span>
+				</article>
+				<article class="price-card price-card--featured">
+					<span class="price-card__label">Focused shockwave</span>
+					<strong>${site.shockwave.pricePerArea}</strong>
+					<span class="price-card__unit">per pain area, per treatment</span>
+				</article>
+				<article class="price-card">
+					<span class="price-card__label">Shockwave pre-pay</span>
+					<strong>${site.shockwave.prepayPrice}</strong>
+					<span class="price-card__unit">for {site.shockwave.prepayTreatments} treatments on the same pain area</span>
+				</article>
+			</div>
+		</div>
+	</section>
+</Layout>

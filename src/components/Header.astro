@@ -1,0 +1,64 @@
+---
+import { hasPhone, navItems, site } from '../data/site';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+	<div class="header-inner container">
+		<a class="brand" href="/" aria-label={`${site.name} home`}>
+			<span class="brand-mark" aria-hidden="true">MT</span>
+			<span class="brand-copy">
+				<strong>{site.shortName}</strong>
+				<span>{site.category}</span>
+			</span>
+		</a>
+
+		<nav class="desktop-nav" aria-label="Main navigation">
+			{navItems.map((item) => (
+				<a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+					{item.label}
+				</a>
+			))}
+		</nav>
+
+		<div class="header-actions">
+			<a class="header-phone" href={hasPhone ? site.phoneHref : '/contact/'}>
+				<span class="header-phone__label">Call</span>
+				<span>{site.phone} <span class="phone-mnemonic">({site.phoneMnemonic})</span></span>
+			</a>
+			<a class="button button--small" href="/contact/">Get in touch <span aria-hidden="true">&rarr;</span></a>
+			<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+				<span class="sr-only">Open menu</span>
+				<span></span><span></span>
+			</button>
+		</div>
+	</div>
+
+	<nav class="mobile-nav container" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+		{navItems.map((item) => (
+			<a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
+		))}
+		<a class="mobile-nav__action" href="/contact/">Get in touch <span aria-hidden="true">&rarr;</span></a>
+	</nav>
+</header>
+
+<script>
+	const menuButton = document.querySelector<HTMLButtonElement>('.menu-toggle');
+	const mobileMenu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+
+	menuButton?.addEventListener('click', () => {
+		const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+		menuButton.setAttribute('aria-expanded', String(!isOpen));
+		mobileMenu?.classList.toggle('is-open', !isOpen);
+		const menuLabel = menuButton.querySelector<HTMLElement>('.sr-only');
+		if (menuLabel) menuLabel.textContent = isOpen ? 'Open menu' : 'Close menu';
+	});
+
+	mobileMenu?.querySelectorAll('a').forEach((link) => {
+	link.addEventListener('click', () => {
+			menuButton?.setAttribute('aria-expanded', 'false');
+			mobileMenu?.classList.remove('is-open');
+		});
+	});
+</script>

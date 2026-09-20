@@ -1,0 +1,20 @@
+---
+interface Props {
+	href: string;
+	label: string;
+	variant?: 'solid' | 'quiet';
+	external?: boolean;
+}
+
+const { href, label, variant = 'solid', external = false } = Astro.props;
+---
+
+<a
+	class:list={['button', `button--${variant}`]}
+	href={href}
+	target={external ? '_blank' : undefined}
+	rel={external ? 'noreferrer' : undefined}
+>
+	<span>{label}</span>
+	<span class="button-arrow" aria-hidden="true">&rarr;</span>
+</a>

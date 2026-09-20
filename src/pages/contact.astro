@@ -1,0 +1,52 @@
+---
+import BookingAction from '../components/BookingAction.astro';
+import ContactDetails from '../components/ContactDetails.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { hasPhone, site } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact and location" description="Find the hours, location, phone number, and appointment information for McCandless Township Chiropractic.">
+	<section class="page-hero">
+		<div class="container page-hero__grid">
+			<div>
+				<span class="eyebrow">Contact and location</span>
+				<h1>When you are ready, reach out.</h1>
+			</div>
+			<p class="page-hero__copy">Keep the practical details in one place: how to call, when the office is open, and where to find it.</p>
+		</div>
+	</section>
+
+	<section class="section section--white">
+		<div class="container contact-page-grid">
+			<div>
+				<span class="section-kicker">The essentials</span>
+				<h2 class="section-heading h2-like">Let's make this easy.</h2>
+				<p class="hero-copy">First visits are by appointment only. Returning patients may walk in during posted hours. Call the office with questions or to schedule your first visit.</p>
+				<div class="hero-actions">
+					<BookingAction />
+					<a class="text-link" href={hasPhone ? site.phoneHref : '#contact-details'}>{hasPhone ? `Call ${site.phone}` : 'Add the office phone'} <span aria-hidden="true">&rarr;</span></a>
+				</div>
+			</div>
+			<div id="contact-details">
+				<ContactDetails />
+				<div class="payment-note">
+					<span class="section-kicker">Payment information</span>
+					<h3>Transparent cash-practice pricing.</h3>
+					<p>The office currently operates as a cash practice. Ask the office for an itemized receipt if you plan to seek HSA/FSA reimbursement, then check with your plan administrator. Future card acceptance should be confirmed before it is published here.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container contact-page-grid">
+			<div class="prose">
+				<span class="section-kicker">Find the office</span>
+				<h2>Put the destination on your map.</h2>
+				<p>The interactive map below can provide directions to the office. Parking is available at the office location. Add entrance, nearby landmark, and accessibility details after the practice confirms them.</p>
+			</div>
+			<MapEmbed />
+		</div>
+	</section>
+</Layout>

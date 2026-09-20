@@ -1,0 +1,38 @@
+---
+import { faqs } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Frequently asked questions" description="Answers to common questions about visiting McCandless Township Chiropractic.">
+	<section class="page-hero">
+		<div class="container page-hero__grid">
+			<div>
+				<span class="eyebrow">FAQ</span>
+				<h1>Good questions belong here.</h1>
+			</div>
+			<p class="page-hero__copy">A short, practical reference for scheduling, preparing, payment, and finding the office.</p>
+		</div>
+	</section>
+
+	<section class="section section--white">
+		<div class="container split-section">
+			<div class="section-aside">
+				<span class="section-kicker">Common questions</span>
+				<p>Have a question that is not listed? The office can help you find the right answer.</p>
+			</div>
+			<div>
+				<div class="faq-list">
+					{faqs.map((item, index) => (
+						<details class="faq-item" open={index === 0}>
+							<summary>{item.question}</summary>
+							<div class="faq-item__answer">{item.answer}</div>
+						</details>
+					))}
+				</div>
+				<div class="content-note">
+					<strong>Practice review:</strong> Confirm payment, insurance, cancellation, and HSA/FSA language with the practice before publishing.
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

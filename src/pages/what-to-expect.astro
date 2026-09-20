@@ -1,0 +1,46 @@
+---
+import PrimaryAction from '../components/PrimaryAction.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="What to expect" description="Learn what to expect when you contact McCandless Township Chiropractic for a first visit.">
+	<section class="page-hero">
+		<div class="container page-hero__grid">
+			<div>
+				<span class="eyebrow">Your first visit</span>
+				<h1>Know the shape of the next step.</h1>
+			</div>
+			<p class="page-hero__copy">A simple guide to reaching out, preparing, and arriving with the questions that matter to you.</p>
+		</div>
+	</section>
+
+	<section class="section section--white">
+		<div class="container split-section">
+			<div class="section-aside">
+				<span class="section-kicker">The process</span>
+				<span class="section-aside__number" aria-hidden="true">03</span>
+				<p>Details will be updated with the office's actual intake and appointment process.</p>
+			</div>
+			<div>
+				<ol class="steps-list">
+					<li class="step">
+						<span class="step__number">01</span>
+						<div><h2>Reach out</h2><p>First visits are by appointment only. Call the office or use the approved scheduling link. Returning patients may walk in during posted hours.</p></div>
+					</li>
+					<li class="step">
+						<span class="step__number">02</span>
+						<div><h2>Prepare for your visit</h2><p>[Add approved instructions about forms, identification, insurance information, what to bring, and arrival time.]</p></div>
+					</li>
+					<li class="step">
+						<span class="step__number">03</span>
+						<div><h2>Talk through your questions</h2><p>[Add an approved description of what happens during a first visit. Do not promise a diagnosis, treatment result, or specific outcome.]</p></div>
+					</li>
+				</ol>
+				<div class="hero-actions">
+					<PrimaryAction href="/contact/" label="Contact the office" />
+					<a class="text-link" href="/faq/">Read common questions <span aria-hidden="true">&rarr;</span></a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,31 @@
+---
+import TestimonialGrid from '../components/TestimonialGrid.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Patient reviews" description="Read selected public Google review excerpts for McCandless Township Chiropractic in Pittsburgh, Pennsylvania.">
+	<section class="page-hero">
+		<div class="container page-hero__grid">
+			<div>
+				<span class="eyebrow">Patient reviews</span>
+				<h1>What the community says.</h1>
+			</div>
+			<p class="page-hero__copy">Selected excerpts from public Google reviews about Dr. Swegman and the practice.</p>
+		</div>
+	</section>
+
+	<TestimonialGrid />
+
+	<section class="section section--deep">
+		<div class="container callout callout--deep">
+			<div>
+				<span class="section-kicker">Ready to talk?</span>
+				<h2>Start with a conversation.</h2>
+			</div>
+			<div class="callout__aside">
+				<p>Call the office to ask a question, confirm hours, or schedule a visit.</p>
+				<a class="button" href="/contact/">Contact the office <span aria-hidden="true">&rarr;</span></a>
+			</div>
+		</div>
+	</section>
+</Layout>
